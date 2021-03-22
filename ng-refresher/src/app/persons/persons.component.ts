@@ -1,4 +1,5 @@
-import { Component, Input} from "@angular/core";
+import { Component} from "@angular/core";
+import { PersonService } from "./persons.service";
 
 
 @Component({
@@ -7,5 +8,9 @@ import { Component, Input} from "@angular/core";
 })
 export class PersonsComponent{
 
-  @Input() personList: string[];
+  personList: string[];
+  constructor(prsService: PersonService){
+    this.personList = prsService.persons;
+
+  }
 }
