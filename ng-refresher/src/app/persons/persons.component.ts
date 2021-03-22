@@ -1,4 +1,4 @@
-import { Component} from "@angular/core";
+import { Component, OnInit} from "@angular/core";
 import { PersonService } from "./persons.service";
 
 
@@ -6,11 +6,18 @@ import { PersonService } from "./persons.service";
   selector: 'app-persons',
   templateUrl: './persons.component.html'
 })
-export class PersonsComponent{
+export class PersonsComponent implements OnInit{
 
   personList: string[];
-  constructor(prsService: PersonService){
-    this.personList = prsService.persons;
+  //private presonService: PersonService;
+
+  constructor(private prsService: PersonService){
+    //this.personList = prsService.persons;
+    //this.presonService = prsService;
+  }
+
+  ngOnInit(){
+    this.personList = this.prsService.persons;
 
   }
 }
