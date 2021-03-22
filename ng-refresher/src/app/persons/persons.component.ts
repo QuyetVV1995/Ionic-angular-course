@@ -10,6 +10,7 @@ import { PersonService } from "./persons.service";
 export class PersonsComponent implements OnInit, OnDestroy{
 
   personList: string[];
+  isFetching = false;
   private personListSubs: Subscription;
   //private presonService: PersonService;
 
@@ -24,8 +25,10 @@ export class PersonsComponent implements OnInit, OnDestroy{
     this.personListSubs = this.prsService.personsChanged.subscribe(
       persons =>{
         this.personList = persons;
+        this.isFetching =false;
       }
     );
+    this.isFetching = true;
   }
 
   onRemovePerson(personname: string){
